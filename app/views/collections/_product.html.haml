@@ -1,0 +1,6 @@
+%li
+  %a{href: collection_product_url(@collection, product)}
+    %h2
+      - unless product.manufacturer.blank?
+        = product.manufacturer + ' – '
+      = product.name

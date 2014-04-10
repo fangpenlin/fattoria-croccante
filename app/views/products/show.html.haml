@@ -1,0 +1,13 @@
+= link_to 'Back', collection_url(@collection)
+%h1
+  = @product.name
+
+- if @product.manufacturer
+  %h2
+    = @product.manufacturer
+
+- unless @product.variants.size > 1
+  = number_to_currency(@product.variants.first.price.amount)
+
+
+- else
