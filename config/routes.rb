@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  # The users cart will be available
+  # as /cart for each user
+  resource :cart, only: [:show] do
+    resources :line_items, only: [:create, :update, :destroy]
+  end
+
+
   # In our example store every product is within
   # a collection, so we build the routes accordingly.
   # However such a configuration is not mandatory, products
@@ -13,6 +20,7 @@ Rails.application.routes.draw do
     # in the URI
     resources :products, only: [:show], path: '/'
   end
+
 
 
 end

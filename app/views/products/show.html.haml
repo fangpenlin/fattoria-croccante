@@ -6,8 +6,18 @@
   %h2
     = @product.manufacturer
 
-- unless @product.variants.size > 1
-  = number_to_currency(@product.variants.first.price.amount)
+%p
+  = @product.description
 
+- unless @product.variants.size > 1
+  - variant = @product.variants.first
+
+  = variant.order_number
+  = number_to_currency(variant.price.amount)
+  = form_for [@cart, Cornerstore::LineItem.new], url: cart_line_items_path do |f|
+    = f.hidden_field :product_id, value: @product.id
+    = f.hidden_field :variant_id, value: variant.id
+    = f.hidden_field :qty, value: 1
+    = f.submit 'Add to cart'
 
 - else

@@ -1,0 +1,25 @@
+%table
+  %thead
+    %tr
+      %td Description
+      %td Order Number
+      %td Quantity
+      %td Price
+      %td Total
+  %tbody
+    - if @cart.empty?
+      %tr
+        %td{colspan: 5}
+          Your cart is still empty. You can shop for fabulous products
+          %a{href: '/'} here!
+    - else
+      = render partial: 'line_item', collection: @cart.line_items.to_a
+
+  - unless @cart.empty?
+    %tfoot
+      %tr
+        %td Subtotal
+        %td= number_to_currency(@cart.total.amount)
+
+- unless @cart.empty?
+  = link_to 'Go to checkout', @cart.checkout_url

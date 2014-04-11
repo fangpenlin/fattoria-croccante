@@ -7,9 +7,23 @@
     = csrf_meta_tags
   %body
 
+    - unless flash.empty?
+      #flash
+        - flash.each do |name, message|
+          %p{class: name}
+            = message
+
     #nav
       %ul
         = collections_for_navigation(@collections)
+
+    #cart
+      %a{href: cart_url}
+        - unless @cart.empty?
+          = pluralize @cart.line_items.size, 'article'
+
+        - else
+          Your cart is empty
 
     #stage
       = yield
