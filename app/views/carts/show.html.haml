@@ -13,7 +13,7 @@
           Your cart is still empty. You can shop for fabulous products
           %a{href: '/'} here!
     - else
-      = render partial: 'line_item', collection: @cart.line_items.to_a
+      = render partial: 'line_item', collection: @cart.line_items
 
   - unless @cart.empty?
     %tfoot

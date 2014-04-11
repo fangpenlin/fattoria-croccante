@@ -2,7 +2,7 @@
   %td= line_item.description
   %td= line_item.order_number
   %td
-    = form_for [:cart, line_item], url: cart_line_item_url(line_item) do |f|
+    = form_for [:cart, line_item], url: cart_line_item_url(line_item), method: :patch do |f|
       = f.text_field :qty
 
     = button_to 'Remove', cart_line_item_url(line_item), method: :delete
