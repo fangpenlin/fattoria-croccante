@@ -5,6 +5,9 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    %link{href: 'http://fonts.googleapis.com/css?family=Lato:400,700,900', rel: 'stylesheet', type: 'text/css'}
+    %link{href: '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', rel: 'stylesheet'}
+
   %body
 
     - unless flash.empty?
@@ -13,17 +16,14 @@
           %p{class: name}
             = message
 
-    #nav
-      %ul
-        = collections_for_navigation(@collections)
 
-    #cart
-      %a{href: cart_url}
-        - unless @cart.empty?
-          = pluralize @cart.line_items.size, 'article'
+    #header
+      .container
+        %h1 Fattoria Croccante
 
-        - else
-          Your cart is empty
+        #cart
+          %a{href: cart_url}= @cart.line_items.size
 
     #stage
-      = yield
+      .container
+        = yield

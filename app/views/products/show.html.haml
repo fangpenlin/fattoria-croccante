@@ -1,23 +1,25 @@
-= link_to 'Back', collection_url(@collection)
-%h1
-  = @product.name
+#product
+  .back= link_to 'Back', collection_url(@collection)
 
-- if @product.manufacturer
-  %h2
-    = @product.manufacturer
+  %img{src: @product.images.first.url(500, 500, 'fill')}
 
-%p
-  = @product.description
+  .details
 
-- unless @product.variants.size > 1
-  - variant = @product.variants.first
+    %h1= @product.name
+    - if @product.manufacturer
+      %h2= 'by ' + @product.manufacturer
 
-  = variant.order_number
-  = number_to_currency(variant.price.amount)
-  = form_for [@cart, Cornerstore::LineItem.new], url: cart_line_items_path do |f|
-    = f.hidden_field :product_id, value: @product.id
-    = f.hidden_field :variant_id, value: variant.id
-    = f.hidden_field :qty, value: 1
-    = f.submit 'Add to cart'
+    .description= @product.description
 
-- else
+    - unless @product.variants.size > 1
+      - variant = @product.variants.first
+
+      -# = variant.order_number
+      .price= number_to_currency(variant.price.amount)
+      = form_for [@cart, Cornerstore::LineItem.new], url: cart_line_items_path do |f|
+        = f.hidden_field :product_id, value: @product.id
+        = f.hidden_field :variant_id, value: variant.id
+        = f.hidden_field :qty, value: 1
+        = f.submit 'Add to cart'
+
+    - else

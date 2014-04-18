@@ -1,0 +1,161 @@
+$black:  #666
+$orange: #f77f1d
+$green:  #68a844
+$brown:  #fbf4e4
+
+@mixin font-fa
+  font-family: FontAwesome
+  font-weight: normal
+
+*:not(td) // https://code.google.com/p/chromium/issues/detail?id=103543
+  box-sizing: border-box
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+
+body, input, textarea
+  font-family: 'Lato', Helvetica, sans-serif
+  font-weight: 400
+  font-size: 100%
+  line-height: 1.5
+  color: $black
+  background-color: $brown
+  -webkit-font-smoothing: antialiased
+
+a
+  color: $green
+  text-decoration: none
+
+.container
+  position: relative
+  width: 960px
+  margin: 0 auto
+  overflow: hidden
+
+#header
+  font-size: 2em
+  background-color: #FFF
+  border-bottom: 2px solid #CCC
+  padding: 20px 0
+
+  h1
+    float: left
+    color: $orange
+    font-weight: 900
+    text-transform: uppercase
+
+    &:before
+      @include font-fa
+      color: $green
+      content: '\f06c'
+      padding-right: 15px
+
+  #cart
+    float: right
+
+    a
+      color: $green
+
+      &:before
+        @include font-fa
+        color: $green
+        content: '\f07a'
+        padding-right: 15px
+
+#stage
+  padding: 20px 0
+
+#nav
+  width: 200px
+  float: left
+  font-size: 1.2em
+  text-transform: uppercase
+
+  li
+    line-height: 2
+
+    ul > li
+      padding-left: 15px
+      font-size: 0.8em
+
+#main
+  width: 760px
+  float: right
+
+  #products
+    li
+      background-color: #FFF
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)
+      float: left
+      padding: 5px
+      width: 240px
+      margin: 5px
+      border-radius: 2px
+      text-align: center
+      font-size: 0.8em
+
+      img
+        border-radius: 2px
+
+      a
+        color: $black
+
+        .manufacturer
+          text-transform: uppercase
+
+        .name
+          font-size: 1.8em
+          font-weight: 600
+
+        .price
+          font-size: 1.5em
+          color: $orange
+
+#product
+  img
+    float: left
+    border: 5px solid white
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)
+
+  .back
+    padding-bottom: 15px
+    font-weight: 600
+
+    a:before
+      @include font-fa
+      content: '\f060'
+      padding-right: 10px
+
+  .details
+    text-align: center
+    float: right
+    width: 400px
+
+    h1
+      font-size: 2.5em
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+
+    h2
+      line-height: 2.5
+
+    .description
+      padding: 40px 0
+      text-align: justify
+
+    .price
+      font-size: 3em
+      color: $orange
+      font-width: 600
+
+input[type=submit]
+  background-color: $green
+  border: 0
+  padding: 10px 40px
+  color: #FFF
+  font-size: 1.2em
+  border-radius: 2px
+  cursor: pointer
+  margin-top: 20px
+  width: 100%
+
+  &:hover
+    background-color: lighten($green, 10)

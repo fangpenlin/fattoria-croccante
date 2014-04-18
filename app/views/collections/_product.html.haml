@@ -1,6 +1,7 @@
 %li
   %a{href: collection_product_url(@collection, product)}
-    %h2
-      - unless product.manufacturer.blank?
-        = product.manufacturer + ' – '
-      = product.name
+    %img{src: product.images.first.url(230, 230, 'fill')}
+    - unless product.manufacturer.blank?
+      .manufacturer= product.manufacturer
+    .name= product.name
+    .price= number_to_currency(product.variants.first.price.amount)

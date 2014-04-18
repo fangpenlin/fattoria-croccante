@@ -1,5 +1,10 @@
-%h1
-  = @collection.name
+#nav
+  %ul
+    = collections_for_navigation(@collections)
 
-%ul#products
-  = render partial: 'product', collection: @products
+#main
+  -# %h1
+  -#   = @collection.name
+
+  %ul#products
+    = render partial: 'product', collection: @products
