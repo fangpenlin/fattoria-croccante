@@ -1,0 +1,18 @@
+#nav
+  %ul
+    = collections_for_navigation(@collections)
+
+  %form
+
+  = form_for @search, url: search_url, method: :get do |f|
+    = f.text_field :keywords
+
+#main
+  %h2
+    Your search for "
+    = @search.keywords
+    " yielded
+    = pluralize(@search.results.count, 'results')
+
+  %ul#products
+    = render partial: 'product', collection: @products

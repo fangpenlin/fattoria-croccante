@@ -1,5 +1,5 @@
 #product
-  .back= link_to 'Back', collection_url(@collection)
+  .back= link_to 'Back', @collection ? collection_url(@collection) : :back
 
   %img{src: @product.images.first.url(500, 500, 'fill')}
 

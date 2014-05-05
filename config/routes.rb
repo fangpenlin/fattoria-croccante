@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :line_items, only: [:create, :update, :destroy]
   end
 
+  # Product search
+  resource :search, only: [:show]
+  resources :products, only: [:show] # products without a collection
 
   # In our example store every product is within
   # a collection, so we build the routes accordingly.
@@ -20,7 +23,4 @@ Rails.application.routes.draw do
     # in the URI
     resources :products, only: [:show], path: '/'
   end
-
-
-
 end
