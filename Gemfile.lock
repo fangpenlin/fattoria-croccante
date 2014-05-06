@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/crispymtn/cornerstore-gem.git
-  revision: 0c254bb849eebb801ac392c8504466a9a9eaa801
+  revision: 980735fd7658ec26121b54360c6a881298202c79
   specs:
-    cornerstore (0.1.2)
+    cornerstore (0.5.0)
       activemodel
       rest-client
 
