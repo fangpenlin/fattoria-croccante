@@ -1,0 +1,19 @@
+We received the payment for your order!
+
+<% if @order.shipments.empty? %>
+    Congrats, we got the payment for your order and will soon ship it.
+<% else %>
+    Congrats, we got the payment for your order which also has been already shipped.
+<% end %>
+
+=== General information ===
+
+Order: <%= '#' + @order.number %>
+E-mail: <%= @order.customer.email %>
+Order date: <%= I18n.l @order.placed_at, format: :long %>
+Paid with: <%= @order.payment_means.type %>
+Paid date: <%= I18n.l @order.payment_means.paid_at, format: :long %>
+
+=== Billing addresss ===
+
+<%= render partial: 'address', locals: { address: @order.billing_address } %>

@@ -10,6 +10,16 @@ Rails.application.routes.draw do
   resource :search, only: [:show]
   resources :products, only: [:show] # products without a collection
 
+  # Callbacks for email content
+  resources :mails do
+    collection do
+      post :placed_notification
+      post :paid_notification
+      post :shipped_notification
+      post :canceled_notification
+    end
+  end
+
   # In our example store every product is within
   # a collection, so we build the routes accordingly.
   # However such a configuration is not mandatory, products

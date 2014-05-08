@@ -1,0 +1,15 @@
+Your order has been canceled!
+
+The following order was unfortunately canceled.
+
+=== General information ===
+
+Order: <%= '#' + @order.number %>
+E-mail: <%= @order.customer.email %>
+Order date: <%= I18n.l @order.placed_at, format: :long %>
+Cancel date: <%= I18n.l @order.cancellations.first.created_at, format: :long %>
+
+=== Canceled items ===
+
+Pos     Description     Qty     Price     Total
+<%= render partial: 'line_item', collection: @order.cancellations.first.line_items %>

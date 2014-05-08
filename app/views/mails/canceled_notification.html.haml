@@ -1,0 +1,38 @@
+%h1 Your order has been canceled!
+
+%p
+  The following order was unfortunately canceled.
+
+%h2 General information
+
+%table
+  %tbody
+    %tr
+      %td Order
+      %td= '#' + @order.number
+
+    %tr
+      %td E-mail
+      %td= @order.customer.email
+
+    %tr
+      %td Order date
+      %td= I18n.l @order.placed_at, format: :long
+
+    %tr
+      %td Cancel date
+      %td= I18n.l @order.cancellations.first.created_at, format: :long
+
+%h2 Canceled items
+
+%table
+  %thead
+    %tr
+      %td Pos
+      %td Description
+      %td Qty
+      %td Price
+      %td Total
+
+  %tbody
+    = render partial: 'line_item', collection: @order.cancellations.first.line_items

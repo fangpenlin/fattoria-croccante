@@ -1,0 +1,10 @@
+<%= address.firstname %> <%= address.name %>
+<% unless address.company.blank? %>
+  <%= address.company %>
+<% end %>
+<%= address.number %> <%= address.street %>
+<% unless address.addition.blank? %>
+  <%= address.addition %>
+<% end %>
+<%= address.town %> <%= address.state %> <%= address.zip %>
+<%= address.country %>

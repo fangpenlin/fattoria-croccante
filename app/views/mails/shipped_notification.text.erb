@@ -1,0 +1,20 @@
+Your order has been shipped!
+
+Congrats, we shipped your order! You will soon enjoy the deliciousness of our products.
+
+=== General information ===
+
+Order: <%= '#' + @order.number %>
+E-mail: <%= @order.customer.email %>
+Order date: <%= I18n.l @order.placed_at, format: :long %>
+Carrier: <%= @order.shipments.first.carrier.name %> / <%= @order.shipments.first.carrier.service %>
+Tracking number: <%= @order.shipments.first.tracking_number %>
+
+=== Shipping addresss ===
+
+<%= render partial: 'address', locals: { address: @order.shipping_address } %>
+
+=== These items have been shipped ===
+
+Pos     Description     Qty     Price     Total
+<%= render partial: 'line_item', collection: @order.shipments.first.line_items %>

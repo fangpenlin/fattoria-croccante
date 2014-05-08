@@ -1,0 +1,62 @@
+%h1 Thank you for your order at the Fattoria!
+
+%h2 General information
+
+%table
+  %tbody
+    %tr
+      %td Order
+      %td= '#' + @order.number
+
+    %tr
+      %td E-mail
+      %td= @order.customer.email
+
+    %tr
+      %td Order date
+      %td= I18n.l @order.placed_at, format: :long
+
+%h2 Addresses
+
+%p The order will be shipped to:
+= render partial: 'address', locals: { address: @order.shipping_address }
+
+%p The order will be billed to:
+= render partial: 'address', locals: { address: @order.billing_address }
+
+
+%h2 Ordered items
+
+%table
+  %thead
+    %tr
+      %td Pos
+      %td Description
+      %td Qty
+      %td Price
+      %td Total
+
+  %tbody
+    = render partial: 'line_item', collection: @order.line_items
+
+  %tfooter
+    %tr
+      %td{colspan: 4} Subtotal
+      %td= number_to_currency(@order.subtotal.amount)
+
+    - if @order.handling_costs
+      %tr
+        %td{colspan: 4}  Handling
+        %td= number_to_currency(@order.handling_costs)
+
+    - if @order.sales_tax
+      %tr
+        %td{colspan: 4}  Tax
+        %td= number_to_currency(@order.sales_tax.amount)
+    %tr
+      %td{colspan: 4}  Total
+      %td= number_to_currency(@order.total.amount)
+
+
+
+

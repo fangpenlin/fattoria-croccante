@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/crispymtn/cornerstore-gem.git
-  revision: 980735fd7658ec26121b54360c6a881298202c79
+  revision: ac68f6e95b5a5b49171b73b6b06bbfc6375103ed
   specs:
     cornerstore (0.5.0)
       activemodel

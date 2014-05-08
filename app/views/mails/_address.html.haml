@@ -1,0 +1,34 @@
+%table
+  %tbody
+    %tr
+      %td Name
+      %td
+        = address.firstname
+        = address.name
+
+    - unless address.company.blank?
+      %tr
+        %td Company
+        %td= address.company
+
+    %tr
+      %td Street
+      %td
+        = address.number
+        = address.street
+
+    - unless address.addition.blank?
+      %tr
+        %td Addition
+        %td= address.addition
+
+    %tr
+      %td Town
+      %td
+        = address.town
+        = address.state
+        = address.zip
+
+    %tr
+      %td
+      %td= address.country

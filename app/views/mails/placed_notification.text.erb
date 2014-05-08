@@ -1,0 +1,33 @@
+Thank you for your order at the Fattoria!
+
+=== General information ===
+
+Order: <%= '#' + @order.number %>
+E-mail: <%= @order.customer.email %>
+Order date: <%= I18n.l @order.placed_at, format: :long %>
+
+=== Addresses ===
+
+The order will be shipped to:
+<%= render partial: 'address', locals: { address: @order.shipping_address } %>
+
+The order will be billed to:
+<%= render partial: 'address', locals: { address: @order.billing_address } %>
+
+=== Ordered items ===
+
+Pos     Description     Qty     Price     Total
+<%= render partial: 'line_item', collection: @order.line_items %>
+
+Subtotal: <%= number_to_currency(@order.subtotal.amount) %>
+
+<% if @order.handling_costs %>
+Handling costs: <%= number_to_currency(@order.handling_costs.amount) %>
+<% end %>
+
+<% if @order.sales_tax %>
+Tax: <%= number_to_currency(@order.sales_tax.amount) %>
+<% end %>
+
+Total: <%= number_to_currency(@order.total.amount) %>
+

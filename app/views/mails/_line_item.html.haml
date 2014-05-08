@@ -1,0 +1,9 @@
+%tr
+  %td= line_item_counter + 1
+  %td= line_item.description
+  %td
+    = line_item.qty
+    ×
+    = line_item.unit
+  %td= number_to_currency(line_item.price.amount)
+  %td= number_to_currency(line_item.total.amount)

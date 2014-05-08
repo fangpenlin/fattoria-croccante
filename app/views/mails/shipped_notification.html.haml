@@ -1,0 +1,52 @@
+// We use shipments.first throughout this email because if there are several shipments
+// this would be the latest one and the mails for the others should already have been
+// generated and sent
+%h1 Your order has been shipped!
+
+%p
+  Congrats, we shipped your order! You will soon enjoy the deliciousness of our products.
+
+%h2 General information
+
+%table
+  %tbody
+    %tr
+      %td Order
+      %td= '#' + @order.number
+
+    %tr
+      %td E-mail
+      %td= @order.customer.email
+
+    %tr
+      %td Order date
+      %td= I18n.l @order.placed_at, format: :long
+
+    %tr
+      %td Carrier
+      %td
+        = @order.shipments.first.carrier.name
+        \/
+        = @order.shipments.first.carrier.service
+
+    %tr
+      %td Tracking number
+      %td
+        = @order.shipments.first.tracking_number
+
+
+%h2 Shipping addresss
+= render partial: 'address', locals: { address: @order.shipping_address }
+
+%h2 These items have been shipped
+%table
+  %thead
+    %tr
+      %td Pos
+      %td Description
+      %td Qty
+      %td Price
+      %td Total
+
+  %tbody
+    = render partial: 'line_item', collection: @order.shipments.first.line_items
