@@ -22,14 +22,51 @@ body, input, textarea
   -webkit-font-smoothing: antialiased
 
 a
-  color: $green
   text-decoration: none
+  color: $green
+
+input[type=submit], .button
+  background-color: $green
+  border: 0
+  padding: 10px 40px
+  color: #FFF
+  font-size: 1.2em
+  border-radius: 2px
+  cursor: pointer
+  margin-top: 20px
+  display: inline-block
+
+  &:hover
+    background-color: lighten($green, 10)
+
 
 .container
   position: relative
   width: 960px
   margin: 0 auto
   overflow: hidden
+
+
+#flash
+  width: 500px
+  position: absolute
+  background-color: $green
+  padding: 10px 20px
+  z-index: 99
+  border-radius: 0 0 3px 3px
+  margin: 0 auto
+  left: 50%
+  margin-left: -250px
+  text-align: center
+  color: white
+  -webkit-animation: slideOut 30s infinite
+
+  @-webkit-keyframes slideOut
+    from
+      top: 0px
+
+    to
+      top: -200px
 
 #header
   font-size: 2em
@@ -39,9 +76,11 @@ a
 
   h1
     float: left
-    color: $orange
     font-weight: 900
     text-transform: uppercase
+
+    a
+      color: $orange
 
     &:before
       @include font-fa
@@ -111,6 +150,9 @@ a
           color: $orange
 
 #product
+  input[type=submit]
+    width: 100%
+
   img
     float: left
     border: 5px solid white
@@ -146,16 +188,44 @@ a
       color: $orange
       font-width: 600
 
-input[type=submit]
-  background-color: $green
-  border: 0
-  padding: 10px 40px
-  color: #FFF
-  font-size: 1.2em
-  border-radius: 2px
-  cursor: pointer
-  margin-top: 20px
-  width: 100%
+#cart
+  input[type=text]
+    width: 2em
+    border: 1px solid darken(#FFF, 10)
+    text-align: right
+    padding: 0 5px
+    background-color: #FFF
+    height: 25px
+    margin: 5px
+    float: left
+    border-radius: 2px
 
-  &:hover
-    background-color: lighten($green, 10)
+
+  table
+    td:nth-of-type(1)
+      width: 30%
+
+    td:nth-of-type(4), td:nth-of-type(5)
+      text-align: right
+
+    thead
+      td
+        border-bottom: 1px solid $green
+        text-transform: uppercase
+        font-weight: 600
+
+    tfoot
+      td
+        font-weight: 600
+        text-align: right
+        border-top: 1px solid #EEE
+
+    input[type=submit]
+      font-size: 12px
+      padding: 5px 15px
+      width: auto
+      line-height: 1em
+      margin: 0
+      background-color: #555
+      height: 25px
+      margin: 5px

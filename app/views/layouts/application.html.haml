@@ -19,7 +19,7 @@
 
     #header
       .container
-        %h1 Fattoria Croccante
+        %h1= link_to('Fattoria Croccante', '/')
 
         #cart
           %a{href: cart_url}= @cart.line_items.size
