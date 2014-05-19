@@ -32,7 +32,6 @@ public
         invoice_pdf_callback_url:       "https://fattoria-croccante.herokuapp.com/documents/invoice",
         delivery_note_pdf_callback_url: "https://fattoria-croccante.herokuapp.com/documents/delivery_note",
 
-
         # These callbacks are optional. Whenever Cornerstore needs to send a message
         # to the user because the order has completed a certain step (placed, shipped, paid, etc...)
         # it will call these URLs with the orders JSON. Our code then needs to respond to these
