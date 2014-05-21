@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '4.1.0'
 
@@ -24,12 +25,6 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
+group :production do
+  gem "rails_12factor"
+end
