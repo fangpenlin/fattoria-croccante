@@ -1,9 +1,9 @@
 #nav
+  = form_for Cornerstore::Search.new, url: search_url, method: :get do |f|
+    = f.text_field :keywords, placeholder: "Search…"
+
   %ul
     = collections_for_navigation(@collections)
-
-  = form_for Cornerstore::Search.new, url: search_url, method: :get do |f|
-    = f.text_field :keywords
 
 #main
   -# %h1
