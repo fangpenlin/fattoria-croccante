@@ -26,3 +26,18 @@
         = f.submit 'Add to cart'
 
     - else
+      %h2 Choose one of the following variants:
+      = form_for [@cart, Cornerstore::LineItem.new], url: cart_line_items_path do |f|
+        = f.hidden_field :product_id, value: @product.id
+        = f.hidden_field :qty, value: 1
+
+        %select{name: "cornerstore_line_item[variant_id]"}
+          - @product.variants.each do |variant|
+            %option{value: "#{variant.id}"} #{variant.differentiating_properties.first["key"]}: #{variant.differentiating_properties.first["value"]} | #{number_to_currency(variant.price.amount)}
+
+        = f.submit 'Add to cart'
+    -#
+    -#       - variant.product.variant_differentiators.each do |vd|
+    -# %td
+    -#   - if dp = variant.differentiating_properties.where(key: vd).first
+    -#     = dp.value
