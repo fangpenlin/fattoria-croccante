@@ -2,6 +2,7 @@ $black:  #666
 $orange: #f77f1d
 $green:  #68a844
 $brown:  #fbf4e4
+$almostwhite:   hsl(0, 0%, 95%)
 
 @mixin font-fa
   font-family: FontAwesome
@@ -21,9 +22,15 @@ body, input, textarea
   background-color: $brown
   -webkit-font-smoothing: antialiased
 
+
 a
   text-decoration: none
+
+a:not(.button)
   color: $green
+
+  &:hover
+    color: lighten($green, 10%)
 
 input[type=submit], .button
   background-color: $green
@@ -72,7 +79,7 @@ input[type=submit], .button
   font-size: 2em
   background-color: #FFF
   border-bottom: 2px solid #CCC
-  padding: 20px 0
+  padding: 20px 5px 10px 0
 
   h1
     float: left
@@ -92,7 +99,16 @@ input[type=submit], .button
     float: right
 
     a
+      border-radius: 5px
+      background-color: $almostwhite
+      font-size: 0.7em
+      padding: 0 0.5em
+      line-height: 2em
       color: $green
+      display: block
+
+      &:hover
+        background-color: lighten($almostwhite, 2%)
 
       &:before
         @include font-fa
@@ -104,33 +120,60 @@ input[type=submit], .button
   padding: 20px 0
 
 #nav
-  width: 200px
+  width: 180px
+  margin-right: 20px
   float: left
-  font-size: 1.2em
-  text-transform: uppercase
+  padding-top: 5px
 
-  li
-    line-height: 2
+  input
+    background-color: #FFF
+    border: 0
+    border-radius: 20px
+    width: 100%
+    border: 1px solid #EEE
+    margin-bottom: 20px
+    outline: 0
+    height: 2em
+    padding: 0 15px
+
+  ul > li
+    border-top: 1px solid darken($brown, 5%)
+    line-height: 2.5
+    padding: 0 10px
+    font-size: 1.2em
+    font-weight: bold
+
+    &:first-of-type
+      border: 0
 
     ul > li
       padding-left: 15px
       font-size: 0.8em
+      border: 0
+
+  a:hover
+    color: lighten($green, 10%)
+
 
 #main
   width: 760px
   float: right
+  padding-left: 40px
 
   #products
     li
       background-color: #FFF
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)
       float: left
-      padding: 5px
-      width: 240px
+      padding: 5px 5px 10px 5px
+      width: 230px
       margin: 5px
       border-radius: 2px
       text-align: center
       font-size: 0.8em
+
+      &:hover
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.4)
 
       img
         border-radius: 2px
@@ -143,11 +186,14 @@ input[type=submit], .button
 
         .name
           font-size: 1.8em
-          font-weight: 600
 
         .price
           font-size: 1.5em
           color: $orange
+
+  .search-result
+    font-size: 1.5em
+    margin: 0 5px 15px 5px
 
 #product
   input[type=submit]
@@ -194,12 +240,11 @@ input[type=submit], .button
     border: 1px solid darken(#FFF, 10)
     text-align: right
     padding: 0 5px
-    background-color: #FFF
+    background-color: $almostwhite
     height: 25px
     margin: 5px
     float: left
     border-radius: 2px
-
 
   table
     td:nth-of-type(1)

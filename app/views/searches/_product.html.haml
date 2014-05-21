@@ -1,7 +1,7 @@
 %li
   %a{href: product_url(product)}
     - if product.images.any?
-      %img{src: product.images.first.url(230, 230, 'fill')}
+      %img{src: product.images.first.url(220, 220, 'fill')}
     - unless product.manufacturer.blank?
       .manufacturer= product.manufacturer
     .name= product.name
