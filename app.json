@@ -1,0 +1,9 @@
+{
+  "name": "Fattoria Croccante",
+  "description": "A boilerplate app for getting started with Cornerstore quickly",
+  "repository": "https://github.com/crispymtn/fattoria-croccante",
+  "keywords": ["cornerstore", "ecommerce", "api", "shop", "boilerplate"],
+  "website": "https://www.cornerstore.io",
+  "success_url": "https://www.cornestore.io/api/getting_started#step_2",
+  "addons": ["cornerstore:developer"]
+}
